@@ -48,7 +48,7 @@ export default function App() {
     <div className="flex w-full justify-center items-center min-h-screen bg-gray-100">
       <div
         ref={containerRef}
-        className="relative min-w-[320px] w-[1020px] h-[640px] flex flex-col justify-center items-center bg-white shadow-lg rounded-lg overflow-hidden"
+        className="relative w-[1020px] h-[640px] flex flex-col justify-center items-center bg-white shadow-lg rounded-lg overflow-hidden"
       >
         <h2 className="text-center text-2xl text-red-500 mb-4">{question}</h2>
         <img
