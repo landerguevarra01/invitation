@@ -3,7 +3,9 @@
 import { useState, useRef, useEffect } from "react";
 
 export default function App() {
-  const [question, setQuestion] = useState("hey");
+  const [question, setQuestion] = useState(
+    "I’d love to spend Valentine’s Day with you—will you be my Valentine? 💕"
+  );
   const [showButtons, setShowButtons] = useState(true);
   const [gifSrc, setGifSrc] = useState(
     "https://media.giphy.com/media/FTGah7Mx3ss04PcasF/giphy.gif"
@@ -23,7 +25,7 @@ export default function App() {
   }, []);
 
   const handleYesClick = () => {
-    setQuestion("I ");
+    setQuestion("I love you so much 😘");
     setGifSrc("https://media.giphy.com/media/UMon0fuimoAN9ueUNP/giphy.gif");
     setShowButtons(false); // Hide buttons when Yes is clicked
   };
