@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react";
 
 export default function App() {
   const [question, setQuestion] = useState("hey");
+  const [showButtons, setShowButtons] = useState(true);
   const [gifSrc, setGifSrc] = useState(
     "https://media.giphy.com/media/FTGah7Mx3ss04PcasF/giphy.gif"
   );
@@ -24,6 +25,7 @@ export default function App() {
   const handleYesClick = () => {
     setQuestion("I ");
     setGifSrc("https://media.giphy.com/media/UMon0fuimoAN9ueUNP/giphy.gif");
+    setShowButtons(false); // Hide buttons when Yes is clicked
   };
 
   const moveNoButton = () => {
@@ -57,21 +59,23 @@ export default function App() {
           alt="gif"
           className="w-full max-w-xs cursor-zoom-in transition-transform active:scale-110"
         />
-        <div className="flex justify-center mt-10 space-x-40">
-          <button
-            onClick={handleYesClick}
-            className="bg-red-500 text-white px-6 py-2 rounded-full shadow-md border-2 border-red-500 text-lg"
-          >
-            Yes
-          </button>
-          <button
-            ref={noBtnRef}
-            onMouseOver={moveNoButton}
-            className="bg-white text-red-500 px-6 py-2 rounded-full shadow-md border-2 border-red-500 text-lg cursor-not-allowed"
-          >
-            No
-          </button>
-        </div>
+        {showButtons && (
+          <div className="flex justify-center mt-10 space-x-40">
+            <button
+              onClick={handleYesClick}
+              className="bg-red-500 absolute left-[30%] lg:left-[40%] text-white px-6 py-2 rounded-full shadow-md border-2 border-red-500 text-lg"
+            >
+              Yes
+            </button>
+            <button
+              ref={noBtnRef}
+              onMouseOver={moveNoButton}
+              className="bg-white text-red-500 px-6 py-2 rounded-full shadow-md border-2 border-red-500 text-lg cursor-not-allowed"
+            >
+              No
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
