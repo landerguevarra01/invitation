@@ -31,13 +31,14 @@ export default function App() {
       const btnWidth = noBtnRef.current.offsetWidth;
       const btnHeight = noBtnRef.current.offsetHeight;
 
-      // Container size
-      const maxX = 760 - btnWidth;
-      const maxY = 640 - btnHeight;
+      // Check screen width to determine maxX limit
+      const screenWidth = window.innerWidth;
+      const maxX = screenWidth < 768 ? 250 - btnWidth : 760 - btnWidth; // Limit X movement on smaller screens
+      const maxY = 640 - btnHeight; // Keep Y movement the same
 
       // Generate random positions within limits
-      const randomX = Math.floor(Math.random() * maxX);
-      const randomY = Math.floor(Math.random() * maxY);
+      const randomX = Math.max(0, Math.floor(Math.random() * maxX));
+      const randomY = Math.max(0, Math.floor(Math.random() * maxY));
 
       noBtnRef.current.style.left = `${randomX}px`;
       noBtnRef.current.style.top = `${randomY}px`;
@@ -48,7 +49,7 @@ export default function App() {
     <div className="flex w-full justify-center items-center min-h-screen bg-gray-100">
       <div
         ref={containerRef}
-        className="relative w-[1020px] h-[640px] flex flex-col justify-center items-center bg-white shadow-lg rounded-lg overflow-hidden"
+        className="relative min-w-[320px] w-[1020px] h-[640px] flex flex-col justify-center items-center bg-white shadow-lg rounded-lg overflow-hidden"
       >
         <h2 className="text-center text-2xl text-red-500 mb-4">{question}</h2>
         <img
