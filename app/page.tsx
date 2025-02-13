@@ -8,8 +8,8 @@ export default function App() {
     "https://media.giphy.com/media/FTGah7Mx3ss04PcasF/giphy.gif"
   );
 
-  const noBtnRef = useRef(null);
-  const containerRef = useRef(null);
+  const noBtnRef = useRef<HTMLButtonElement | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     // Ensure the "No" button starts inside the container
@@ -48,7 +48,7 @@ export default function App() {
     <div className="flex w-full justify-center items-center min-h-screen bg-gray-100">
       <div
         ref={containerRef}
-        className="relative w-[1020px] h-[640px] flex flex-col justify-center items-center bg-white shadow-lg rounded-lg overflow-hidden"
+        className="relative min-w-[320px] w-[1020px] h-[640px] flex flex-col justify-center items-center bg-white shadow-lg rounded-lg overflow-hidden"
       >
         <h2 className="text-center text-2xl text-red-500 mb-4">{question}</h2>
         <img
